@@ -1,5 +1,6 @@
 import './App.css';
 import Table from './Table';
+import 'bulma/css/bulma.min.css';
 
 function App() {
   return (
