@@ -1,7 +1,6 @@
 function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues}) {
 
     const handleDeleteRow = () =>{
-        console.log(i)
         deleteRow(i);
     }
     
@@ -9,28 +8,27 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues}) {
         const tableRowsValuesCopy = [...tableRowsValues];
         tableRowsValuesCopy[i].itemDescription = event.target.value;
         setTableRowsValues(tableRowsValuesCopy);
-        // tableRowsValues[i].itemDescription = event.target.value;
-        // setTableRowsValues(tableRowsValues);
     }
 
     const handleQuantityChange = (event) => {
         const tableRowsValuesCopy = [...tableRowsValues];
         tableRowsValuesCopy[i].quantity = event.target.value;
+        tableRowsValuesCopy[i].amount = event.target.value * tableRowsValuesCopy[0].rate;
         setTableRowsValues(tableRowsValuesCopy);
-        // tableRowsValues[i].amount = event.target.value * tableRowsValues[0].rate;
-        // console.log(tableRowsValues[i].amount);
     }     
 
     const handleRateChange = (event) => {
         const tableRowsValuesCopy = [...tableRowsValues];
         tableRowsValuesCopy[i].rate = event.target.value;
+        tableRowsValuesCopy[i].amount = event.target.value * tableRowsValuesCopy[0].quantity;
         setTableRowsValues(tableRowsValuesCopy);
-        // tableRowsValues[i].amount = event.target.value * tableRowsValues[0].quantity;
     }   
 
-    const handleTaxChange = (event) => {
+    const handleTaxPercentageChange = (event) => {
         const tableRowsValuesCopy = [...tableRowsValues];
-        tableRowsValuesCopy[i].tax = event.target.value;
+        tableRowsValuesCopy[i].taxPercentage = event.target.value;
+        tableRowsValuesCopy[i].taxAmount = tableRowsValuesCopy[i].amount * event.target.value / 100;
+        console.log(tableRowsValuesCopy[i].taxAmount);
         setTableRowsValues(tableRowsValuesCopy);
     }   
 
@@ -50,16 +48,19 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues}) {
                 <input 
                     className="input" 
                     type="number"
+                    min="1"
                     placeholder="Add an item description"
                     onChange={handleQuantityChange}
                     value={tableRowsValues[i].quantity}
                     name="quantity"
+                    
                 />
             </td>
             <td>
                 <input 
                     className="input" 
                     type="number" 
+                    min="1"
                     placeholder="Add an item description"
                     onChange={handleRateChange}
                     value={tableRowsValues[i].rate}
@@ -70,15 +71,17 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues}) {
                 <input 
                     className="input" 
                     type="number" 
+                    min="1"
                     placeholder="Add an item description"
-                    onChange={handleTaxChange}
-                    value={tableRowsValues[i].tax}
-                    name="tax"
+                    onChange={handleTaxPercentageChange}
+                    value={tableRowsValues[i].taxPercentage}
+                    name="taxPercentage"
                 />
+                <h1>({tableRowsValues[i].taxAmount})</h1>
             </td>
-            {/* <td>
-                `hi${i}`
-            </td> */}
+            <td>
+                {tableRowsValues[i].amount}
+            </td>
             <td>
                 <button className="button" onClick={handleDeleteRow}>delete</button>
             </td>
