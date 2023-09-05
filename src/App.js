@@ -5,10 +5,19 @@ import 'bulma/css/bulma.min.css';
 
 function App() {
   return (
-    <div className="container  is-max-desktop ">
+    <div className="container is-centered">
+      <nav className="navbar is-link is-fixed-top">        
+        <div className="navbar-end">
+          <div className="navbar-item">
+            <div className="buttons">
+              <button className='button'>Preview</button>
+              <button className='button is-warning'>Download PDF</button>
+            </div>
+          </div>
+        </div>
+      </nav>
       <Form/>
       <Table/>
-      <button className='button is-success centered'>Submit</button>
     </div>
   );
 }

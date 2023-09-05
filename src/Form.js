@@ -1,6 +1,6 @@
 function Form() {
   return (
-    <div className="m-6">
+    <div className="my-6">
         <div className="columns">
             <div className="column">
                 <div className="file is-boxed">
