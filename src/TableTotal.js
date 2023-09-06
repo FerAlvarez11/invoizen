@@ -1,10 +1,10 @@
-function TableTotal({subtotal, tableRowsValues, total}) {
+function TableTotal({subtotal, tableRowsValues, total, currency}) {
   return (
     <table className="table is-bordered is-pulled-right mb-6">
         <tbody>
             <tr>
                 <td><h1>Sub total </h1></td>
-                <td><h1>{subtotal}</h1></td>
+                <td><h1>{currency[1]}{subtotal}</h1></td>
             </tr>
             {tableRowsValues.map((row, i) => {
                 if(row.taxPercentage !== 0) {
@@ -17,7 +17,7 @@ function TableTotal({subtotal, tableRowsValues, total}) {
             })} 
             <tr>
                 <td className="is-link"><h1>Total</h1></td>
-                <td><h1>{total}</h1></td>
+                <td><strong>{currency[1]}{total}</strong></td>
             </tr>
         </tbody>
     </table>

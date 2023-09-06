@@ -1,4 +1,4 @@
-function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues}) {
+function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency}) {
 
     const handleDeleteRow = () =>{
         deleteRow(i);
@@ -45,7 +45,7 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues}) {
                     name="itemDescription"
                 />
             </td>
-            <td>
+            <td style={{width: "10%" }}>
                 <input 
                     className="input" 
                     type="number"
@@ -53,11 +53,10 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues}) {
                     placeholder="Add an item description"
                     onChange={handleQuantityChange}
                     value={tableRowsValues[i].quantity}
-                    name="quantity"
-                    
+                    name="quantity"                    
                 />
             </td>
-            <td>
+            <td style={{width: "10%" }}>
                 <input 
                     className="input" 
                     type="number" 
@@ -68,10 +67,10 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues}) {
                     name="rate"
                 />
             </td>
-            <td>
+            <td style={{width: "10%" }}>
                 <p className="control has-icons-right">
                     <input 
-                        className="input" 
+                        className="input"
                         type="number" 
                         min="1"
                         placeholder="Add an item description"
@@ -85,9 +84,9 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues}) {
                 </p>                
             </td>
             <td>
-                {tableRowsValues[i].amount}
+                {currency[1]}{tableRowsValues[i].amount}
             </td>
-            <td>
+            <td style={{width: "2%" }}>
                 <button className="delete" onClick={handleDeleteRow}>delete</button>
             </td>
         </tr>
