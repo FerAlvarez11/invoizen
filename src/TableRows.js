@@ -1,8 +1,6 @@
 import TableRow from "./TableRow";
 
 function TableRows({addRowValue, tableRowsValues, setTableRowsValues, deleteRow, currency}) {
-
-
     return (
         <div className="table is-bordered">
             <table className="table is-bordered table is-fullwidth">

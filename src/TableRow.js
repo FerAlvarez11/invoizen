@@ -1,5 +1,4 @@
 function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency}) {
-
     const handleDeleteRow = () =>{
         deleteRow(i);
     }
@@ -58,7 +57,7 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
             </td>
             <td style={{width: "10%" }}>
                 <input 
-                    className="input" 
+                    className="input"
                     type="number" 
                     min="1"
                     placeholder="Add an item description"

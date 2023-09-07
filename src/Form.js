@@ -1,15 +1,4 @@
-import { useState } from "react";
-
-function Form() {
-    const[formValue, setFormValue] = useState({
-        image:"",
-        invoiceNumber:0,
-        invoiceDate:null,
-        invoiceDueData:null,
-        personalInformation:"",
-        billTo:"",
-    });
-
+function Form({formValue, setFormValue}) {
     const handleImageChange = (event) => {
         const copyFormValue = {...formValue}
         copyFormValue.image = URL.createObjectURL(event.target.files[0]);;
@@ -45,8 +34,6 @@ function Form() {
         copyFormValue.billTo = event.target.value;
         setFormValue(copyFormValue);
     }
-
-    console.log(formValue);
 
     return (
         <div className="my-6">
