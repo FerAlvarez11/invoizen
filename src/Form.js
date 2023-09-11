@@ -61,8 +61,9 @@ function Form({formValue, setFormValue}) {
                             <input 
                                 onChange={handleInvoiceNumberChange} 
                                 className="input" 
-                                type="number" 
-                                placeholder="Invoice number"
+                                type="text" 
+                                maxLength={20}
+                                placeholder="INV001"
                             />
                         </div>
                     </div>

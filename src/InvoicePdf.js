@@ -13,10 +13,8 @@ const styles = StyleSheet.create({
 		padding:"0 10px 0 10px",
 	},
 	header: {
-		alignSelf: "auto",
 		width:"250px",
 		margin:"20px 0 50px 0px",
-		border:"1px solid red"
 	},
 	tableHeader: {
 		flexDirection: "row",
@@ -44,10 +42,14 @@ const styles = StyleSheet.create({
 		marginBottom:"10px"
 	},
 	tableBodyItemDescription: {
-		width:"60%"
+		width:"60%",
+		height:"30px"
 	},
 	tableBodyItem: {
-		width:"10%"
+		width:"10%",
+		alignItems:"center",
+		border:"1px solid red",
+		margin:"0 auto"
 	},
 	tableTotal: {
 		flexDirection: "row",
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
 		border:"1px solid #cccccc",
 		width:"50%"
 	},
-	backgrColor: {
+	backgroundColor: {
 		backgroundColor:"gray"
 	},
 	borderLeft: {
@@ -87,7 +89,7 @@ function InvoicePdf({tableRowsValues, formValue, subtotal, total, currency}) {
 		<Document>
 			<Page size="A4" style={styles.page}>
 				<View style={[styles.header]}>
-					<Text style={{fontSize:"50pt"}}>INVOICE</Text>
+					<Text style={{fontSize:"30pt", marginBottom:"10px"}}>INVOICE</Text>
 					<Text>Invoice Number: {formValue.invoiceNumber}</Text>
 					<Text>Date: {InvoiceDateConverted}</Text>
 					<Text>Due date: {InvoiceDueDateConverted}</Text>
@@ -112,7 +114,7 @@ function InvoicePdf({tableRowsValues, formValue, subtotal, total, currency}) {
 				</View>
 				{tableRowsValues.map((row, i) => 
 					<View key={nanoid()} style={styles.tableBody}>
-						<Text style={[styles.tableBodyItem, styles.borderLeft, styles.borderBottom]} key={i}>{row.quantity}</Text>
+						<Text style={[styles.tableBodyItem, styles.borderLeft, styles.borderBottom]}>{row.quantity}</Text>
 						<Text style={[styles.tableBodyItemDescription, styles.borderLeft, styles.borderRigth, styles.borderBottom]} key={i}>{row.itemDescription}</Text>
 						<Text style={[styles.tableBodyItem, styles.borderRigth, styles.borderBottom]} key={i}>{row.rate}</Text>
 						<Text style={[styles.tableBodyItem, styles.borderRigth, styles.borderBottom]} key={i}>{row.taxPercentage}%</Text>
@@ -133,7 +135,7 @@ function InvoicePdf({tableRowsValues, formValue, subtotal, total, currency}) {
 						}
 						return null;
 					})} 
-					<Text style={[styles.tableTotalItem, styles.backgrColor, styles.textPadding]}>Total</Text>
+					<Text style={[styles.tableTotalItem, styles.backgroundColor, styles.textPadding]}>Total</Text>
 					<Text style={[styles.tableTotalItem, styles.textPadding]}>{currency}{total}</Text>
 				</View>
 			</Page>

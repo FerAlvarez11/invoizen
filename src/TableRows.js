@@ -1,5 +1,4 @@
 import TableRow from "./TableRow";
-import { nanoid } from 'nanoid'
 
 function TableRows({addRowValue, tableRowsValues, setTableRowsValues, deleteRow, currency}) {
     return (
@@ -15,7 +14,7 @@ function TableRows({addRowValue, tableRowsValues, setTableRowsValues, deleteRow,
                     </tr>
                 </thead>
                 <tbody>
-                    {tableRowsValues.map((row, i) => <TableRow key={nanoid()} i={i} deleteRow={deleteRow} tableRowsValues={tableRowsValues} setTableRowsValues={setTableRowsValues} currency={currency}/>)}
+                    {tableRowsValues.map((row, i) => <TableRow key={i} i={i} deleteRow={deleteRow} tableRowsValues={tableRowsValues} setTableRowsValues={setTableRowsValues} currency={currency}/>)}
                 </tbody>
             </table>
             <button className="button is-primary mr-4" onClick={addRowValue}>

@@ -2,7 +2,6 @@ import { PDFViewer } from "@react-pdf/renderer";
 import { useState } from "react";
 import InvoicePdf from "./InvoicePdf";
 import currencyToSymbolMap from 'currency-symbol-map/map'
-import { nanoid } from 'nanoid'
 
 function Navbar({tableRowsValues, formValue, handleCurrencyChange, currency, subtotal, total}){
     const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(true);
@@ -15,7 +14,7 @@ function Navbar({tableRowsValues, formValue, handleCurrencyChange, currency, sub
                 <div className="select mr-2">
                     <select onChange={handleCurrencyChange} defaultValue={currency[0]}>
                         {Object.entries(currencyToSymbolMap).map((value,key) => 
-                            <option className="dropdown-item" key={nanoid()} value={value[0]}>
+                            <option className="dropdown-item" key={key} value={value[0]}>
                                 {value[0]} ({value[1]})
                             </option>
                         )}

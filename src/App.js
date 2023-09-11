@@ -21,7 +21,7 @@ function App() {
 
     const[formValue, setFormValue] = useState({
         image:"logoDefault.png",
-        invoiceNumber:0,
+        invoiceNumber:"INV001",
         invoiceDate: currentDate,
         invoiceDueDate: currentDate,
         personalInformation:"",

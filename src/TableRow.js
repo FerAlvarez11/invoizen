@@ -30,7 +30,8 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
         tableRowsValuesCopy[i].taxPercentage = event.target.value;
         tableRowsValuesCopy[i].taxAmount = tableRowsValuesCopy[i].amount * event.target.value / 100;
         setTableRowsValues(tableRowsValuesCopy);
-    }   
+    }
+
 
     return (
         <tr>
@@ -40,7 +41,7 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
                     type="text" 
                     placeholder="Add an item description"
                     onChange={handleItemDescriptionChange}
-                    value={tableRowsValues[i].itemDescription}
+                    defaultValue ={tableRowsValues[i].itemDescription}
                     name="itemDescription"
                 />
             </td>
