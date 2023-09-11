@@ -3,8 +3,8 @@ import { useState } from "react";
 import InvoicePdf from "./InvoicePdf";
 import currencyToSymbolMap from 'currency-symbol-map/map'
 
-function Navbar({handleCurrencyChange, currency}){
-    const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
+function Navbar({tableRowsValues, formValue, handleCurrencyChange, currency, subtotal, total}){
+    const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(true);
     console.log(isPreviewModalOpen);
 
     return(
@@ -37,8 +37,8 @@ function Navbar({handleCurrencyChange, currency}){
                         <button onClick={()=>setIsPreviewModalOpen(!isPreviewModalOpen)} className="delete" aria-label="close"></button>
                         </header>
                         <section className="modal-card-body" style={{width : "100%", height: "1000px"}}>
-                            <PDFViewer style={{width : "100%", height: "100%"}}>
-                                <InvoicePdf/>
+                            <PDFViewer style={{width : "100%", height: "100%", showToolbar:"false"}}>
+                                <InvoicePdf tableRowsValues={tableRowsValues} formValue={formValue} subtotal={subtotal} total={total} currency={currency}/>
                             </PDFViewer>
                         </section>
                         <footer className="modal-card-foot">

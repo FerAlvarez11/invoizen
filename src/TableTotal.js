@@ -10,7 +10,7 @@ function TableTotal({subtotal, tableRowsValues, total, currency}) {
                 if(row.taxPercentage !== 0) {
                     return <tr key={`tax_key_${i}`}>
                         <td><h1>Tax ({row.taxPercentage}%)</h1></td>
-                        <td><h1>{row.taxAmount}</h1></td>
+                        <td><h1>{currency[1]}{row.taxAmount}</h1></td>
                     </tr>
                 }
                 return null;

@@ -13,13 +13,13 @@ function Form({formValue, setFormValue}) {
 
     const handleInvoiceDateChange = (event) => {
         const copyFormValue = {...formValue}
-        copyFormValue.personalInformation = event.target.value;
+        copyFormValue.invoiceDate = event.target.value;
         setFormValue(copyFormValue);
     }
 
     const handlePersonalInformationChange = (event) => {
         const copyFormValue = {...formValue}
-        copyFormValue.invoiceDueData = event.target.value;
+        copyFormValue.personalInformation = event.target.value;
         setFormValue(copyFormValue);
     }
 

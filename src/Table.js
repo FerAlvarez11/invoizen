@@ -1,10 +1,7 @@
 import TableRows from "./TableRows";
 import TableTotal from "./TableTotal";
 
-function Table({setTableRowsValues, tableRowsValues, currency}) {
-    const subtotal = tableRowsValues.reduce((accumulator, currentValue) => accumulator + currentValue.amount, 0);
-    const total = subtotal + tableRowsValues.reduce((accumulator, currentValue) => accumulator + currentValue.taxAmount, 0);
-
+function Table({setTableRowsValues, tableRowsValues, currency, subtotal, total}) {
     const addRowValue = () => {
         let copyTableRowsValues = [...tableRowsValues, {
                 itemDescription:"",

@@ -17,15 +17,28 @@ function App() {
         }
     ]);
 
+    let currentDate = new Date().toLocaleDateString();
+    console.log(currentDate);
+
     const[formValue, setFormValue] = useState({
-        image:"",
+        image:"logoDefault.png",
         invoiceNumber:0,
-        invoiceDate:null,
-        invoiceDueData:null,
+        invoiceDate: currentDate,
+        invoiceDueData: currentDate,
         personalInformation:"",
         billTo:"",
     });
+
+    const subtotal = tableRowsValues.reduce((accumulator, currentValue) => accumulator + currentValue.amount, 0);
+    const total = subtotal + tableRowsValues.reduce((accumulator, currentValue) => accumulator + currentValue.taxAmount, 0);
+
+    // const[totalValue, setTotalValue] = useState({
+    //     subtotal:0,
+    //     total:0
+    // })
     
+    console.log(tableRowsValues);
+
     const [currency, setCurrency] = useState(["USD", "$"]);
 
     const handleCurrencyChange = (event) => {
@@ -35,9 +48,9 @@ function App() {
 
     return (
         <div className="container is-centered">
-            <Navbar tableRowsValues={tableRowsValues} formValue={formValue} handleCurrencyChange={handleCurrencyChange} currency={currency}/>
+            <Navbar tableRowsValues={tableRowsValues} formValue={formValue} handleCurrencyChange={handleCurrencyChange} currency={currency} subtotal={subtotal} total={total}/>
             <Form formValue={formValue} setFormValue={setFormValue}/>
-            <Table currency={currency} setTableRowsValues={setTableRowsValues} tableRowsValues={tableRowsValues}/>
+            <Table currency={currency} setTableRowsValues={setTableRowsValues} tableRowsValues={tableRowsValues} subtotal={subtotal} total={total}/>
         </div>
     );
 }
