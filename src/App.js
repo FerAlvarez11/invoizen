@@ -17,27 +17,19 @@ function App() {
         }
     ]);
 
-    let currentDate = new Date().toLocaleDateString();
-    console.log(currentDate);
+    let currentDate = new Date().toJSON().slice(0, 10);
 
     const[formValue, setFormValue] = useState({
         image:"logoDefault.png",
         invoiceNumber:0,
         invoiceDate: currentDate,
-        invoiceDueData: currentDate,
+        invoiceDueDate: currentDate,
         personalInformation:"",
         billTo:"",
     });
-
+   
     const subtotal = tableRowsValues.reduce((accumulator, currentValue) => accumulator + currentValue.amount, 0);
     const total = subtotal + tableRowsValues.reduce((accumulator, currentValue) => accumulator + currentValue.taxAmount, 0);
-
-    // const[totalValue, setTotalValue] = useState({
-    //     subtotal:0,
-    //     total:0
-    // })
-    
-    console.log(tableRowsValues);
 
     const [currency, setCurrency] = useState(["USD", "$"]);
 

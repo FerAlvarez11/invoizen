@@ -12,20 +12,20 @@ function Form({formValue, setFormValue}) {
     }
 
     const handleInvoiceDateChange = (event) => {
-        const copyFormValue = {...formValue}
+        const copyFormValue = {...formValue};
         copyFormValue.invoiceDate = event.target.value;
+        setFormValue(copyFormValue);
+    }
+
+    const handleinvoiceDueDateChange = (event) => {
+        const copyFormValue = {...formValue};
+        copyFormValue.invoiceDueDate = event.target.value;
         setFormValue(copyFormValue);
     }
 
     const handlePersonalInformationChange = (event) => {
         const copyFormValue = {...formValue}
         copyFormValue.personalInformation = event.target.value;
-        setFormValue(copyFormValue);
-    }
-
-    const handleInvoiceDueDataChange = (event) => {
-        const copyFormValue = {...formValue}
-        copyFormValue.invoiceDueData = event.target.value;
         setFormValue(copyFormValue);
     }
 
@@ -75,7 +75,7 @@ function Form({formValue, setFormValue}) {
                                 className="input" 
                                 onChange={handleInvoiceDateChange}
                                 type="date" 
-                                placeholder="Text input"
+                                value={formValue.invoiceDate}
                             />
                         </div>
                     </div>
@@ -86,10 +86,10 @@ function Form({formValue, setFormValue}) {
                         <div className="control">
                             <input 
                                 className="input" 
-                                onChange={handleInvoiceDueDataChange}
+                                onChange={handleinvoiceDueDateChange}
                                 color="primary" 
                                 type="date" 
-                                placeholder="Text input"
+                                value={formValue.invoiceDueDate}
                             />
                         </div>
                     </div>

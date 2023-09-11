@@ -1,3 +1,5 @@
+import { nanoid } from 'nanoid'
+
 function TableTotal({subtotal, tableRowsValues, total, currency}) {
   return (
     <table className="table is-bordered is-pulled-right mb-6">
@@ -8,7 +10,7 @@ function TableTotal({subtotal, tableRowsValues, total, currency}) {
             </tr>
             {tableRowsValues.map((row, i) => {
                 if(row.taxPercentage !== 0) {
-                    return <tr key={`tax_key_${i}`}>
+                    return <tr key={nanoid()}>
                         <td><h1>Tax ({row.taxPercentage}%)</h1></td>
                         <td><h1>{currency[1]}{row.taxAmount}</h1></td>
                     </tr>
