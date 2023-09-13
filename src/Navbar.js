@@ -1,16 +1,16 @@
-import { PDFViewer } from "@react-pdf/renderer";
+import { PDFViewer, PDFDownloadLink } from "@react-pdf/renderer";
 import { useState } from "react";
 import InvoicePdf from "./InvoicePdf";
 import currencyToSymbolMap from 'currency-symbol-map/map'
 
 function Navbar({tableRowsValues, formValue, handleCurrencyChange, currency, subtotal, total}){
-    const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(true);
+    const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
 
     return(
         <div>
             <nav className="navbar is-link is-fixed-top">     
                 <div className="navbar-brand">                  
-                    <img src="logo.png" alt="Invoizen - Invoice generator" style={{height:"60px"}}/>
+                    <img src="logo.png" alt="Invoizen - Invoice generator" style={{marginLeft:"10px"}}/>
                 </div>
                 <div className="navbar-end">
                     <div className="navbar-item">
@@ -25,7 +25,9 @@ function Navbar({tableRowsValues, formValue, handleCurrencyChange, currency, sub
                     </div>
                     <div className="buttons">
                         <button className='button' onClick={()=>setIsPreviewModalOpen(!isPreviewModalOpen)}>Preview</button>
-                        <button className='button is-warning'>Download PDF</button>
+                        <PDFDownloadLink document={<InvoicePdf tableRowsValues={tableRowsValues} formValue={formValue} subtotal={subtotal} total={total} currency={currency}/>} fileName="invoice.pdf">
+                            <button className='button is-warning'> Download PDF</button>
+                        </PDFDownloadLink>                 
                     </div>
                     </div>
                 </div>
@@ -44,7 +46,9 @@ function Navbar({tableRowsValues, formValue, handleCurrencyChange, currency, sub
                             </PDFViewer>
                         </section>
                         <footer className="modal-card-foot">
-                            <button className="button is-link">Download PDF</button>
+                            <PDFDownloadLink document={<InvoicePdf tableRowsValues={tableRowsValues} formValue={formValue} subtotal={subtotal} total={total} currency={currency}/>} fileName="invoice.pdf">
+                                <button className='button is-link mr-2'> Download PDF</button>
+                            </PDFDownloadLink>    
                             <button onClick={()=>setIsPreviewModalOpen(!isPreviewModalOpen)} className="button">Cancel</button>
                         </footer>
                     </div>

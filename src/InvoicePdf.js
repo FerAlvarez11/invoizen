@@ -92,21 +92,22 @@ function InvoicePdf({tableRowsValues, formValue, subtotal, total, currency}) {
 				<View style={[styles.header]}>
 					<Text style={{fontSize:"30pt", marginBottom:"10px"}}>INVOICE</Text>
 					{formValue.invoiceId && 
-						<Text>{formValue.invoiceId}</Text>
+						<Text style={{marginBottom:"5px"}}>#{formValue.invoiceId}</Text>
 					}
-					<Text>Date: {InvoiceDateConverted}</Text>
-					<Text>Due date: {InvoiceDueDateConverted}</Text>
+					<Text>{formValue.personalInformation}</Text>
 				</View>
 				<View style={styles.header}>
 					<Image src={formValue.image} style={{width:"50%", marginLeft:"auto"}}></Image>
 				</View>
+				{formValue.billTo &&
+					<View style={styles.header}>						
+						<Text style={{marginBottom:"5px"}}>Bill to:</Text>
+						<Text>{formValue.billTo}</Text>				
+					</View>
+				}
 				<View style={styles.header}>
-					<Text style={{backgroundColor:"#cccccc", marginBottom:"10px"}}>Invoice From:</Text>
-					<Text>{formValue.personalInformation}</Text>
-				</View>
-				<View style={styles.header}>
-					<Text style={{backgroundColor:"#cccccc", marginBottom:"10px"}}>Bill to:</Text>
-					<Text>{formValue.billTo}</Text>
+						<Text>Date: {InvoiceDateConverted}</Text>
+						<Text>Due date: {InvoiceDueDateConverted}</Text>
 				</View>
 				<View style={styles.tableHeader}>
 					<Text style={[styles.tableHeaderItem]}>Qty</Text>

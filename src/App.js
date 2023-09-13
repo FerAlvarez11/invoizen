@@ -4,7 +4,7 @@ import Form from './Form';
 import Table from './Table';
 import 'bulma/css/bulma.min.css';
 import Navbar from './Navbar';
-import getSymbolFromCurrency from 'currency-symbol-map'
+import getSymbolFromCurrency from 'currency-symbol-map';
 
 function App() {
     const [tableRowsValues, setTableRowsValues] = useState([{
