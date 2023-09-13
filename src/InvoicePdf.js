@@ -106,6 +106,7 @@ function InvoicePdf({tableRowsValues, formValue, subtotal, total, currency}) {
 					</View>
 				}
 				<View style={styles.header}>
+
 						<Text>Date: {InvoiceDateConverted}</Text>
 						<Text>Due date: {InvoiceDueDateConverted}</Text>
 				</View>

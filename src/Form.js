@@ -55,14 +55,14 @@ function Form({formValue, setFormValue}) {
                 </div>
                 <div className="column">
                     <div className="field">
-                        <label className="label">Invoice#</label>
+                        <label className="label"># Invoice</label>
                         <div className="control">
                             <input 
                                 onChange={handleinvoiceIdChange} 
                                 className="input" 
                                 type="text" 
                                 maxLength={20}
-                                placeholder="INV001"
+                                placeholder="Invoice ID"
                             />
                         </div>
                     </div>
