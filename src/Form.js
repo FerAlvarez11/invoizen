@@ -5,9 +5,9 @@ function Form({formValue, setFormValue}) {
         setFormValue(copyFormValue);
     }
 
-    const handleInvoiceNumberChange = (event) => {
+    const handleinvoiceIdChange = (event) => {
         const copyFormValue = {...formValue}
-        copyFormValue.invoiceNumber = event.target.value;
+        copyFormValue.invoiceId = event.target.value;
         setFormValue(copyFormValue);
     }
 
@@ -39,7 +39,6 @@ function Form({formValue, setFormValue}) {
         <div className="my-6">
             <div className="columns">
                 <div className="column">
-                    <img alt="logo" src={formValue.image} />
                     <div className="file is-boxed">
                         <label className="file-label">
                             <input className="file-input" type="file" name="resume" onChange={handleImageChange}/>
@@ -59,7 +58,7 @@ function Form({formValue, setFormValue}) {
                         <label className="label">Invoice#</label>
                         <div className="control">
                             <input 
-                                onChange={handleInvoiceNumberChange} 
+                                onChange={handleinvoiceIdChange} 
                                 className="input" 
                                 type="text" 
                                 maxLength={20}

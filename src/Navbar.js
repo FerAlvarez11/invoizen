@@ -8,24 +8,27 @@ function Navbar({tableRowsValues, formValue, handleCurrencyChange, currency, sub
 
     return(
         <div>
-            <nav className="navbar is-link is-fixed-top">        
-            <div className="navbar-end">
-                <div className="navbar-item">
-                <div className="select mr-2">
-                    <select onChange={handleCurrencyChange} defaultValue={currency[0]}>
-                        {Object.entries(currencyToSymbolMap).map((value,key) => 
-                            <option className="dropdown-item" key={key} value={value[0]}>
-                                {value[0]} ({value[1]})
-                            </option>
-                        )}
-                    </select>
+            <nav className="navbar is-link is-fixed-top">     
+                <div className="navbar-brand">                  
+                    <img src="logo.png" alt="Invoizen - Invoice generator" style={{height:"60px"}}/>
                 </div>
-                <div className="buttons">
-                    <button className='button' onClick={()=>setIsPreviewModalOpen(!isPreviewModalOpen)}>Preview</button>
-                    <button className='button is-warning'>Download PDF</button>
+                <div className="navbar-end">
+                    <div className="navbar-item">
+                    <div className="select mr-2">
+                        <select onChange={handleCurrencyChange} defaultValue={currency[0]}>
+                            {Object.entries(currencyToSymbolMap).map((value,key) => 
+                                <option className="dropdown-item" key={key} value={value[0]}>
+                                    {value[0]} ({value[1]})
+                                </option>
+                            )}
+                        </select>
+                    </div>
+                    <div className="buttons">
+                        <button className='button' onClick={()=>setIsPreviewModalOpen(!isPreviewModalOpen)}>Preview</button>
+                        <button className='button is-warning'>Download PDF</button>
+                    </div>
+                    </div>
                 </div>
-                </div>
-            </div>
             </nav>
             {isPreviewModalOpen && (     
                 <div className="modal is-active">

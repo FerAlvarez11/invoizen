@@ -9,8 +9,9 @@ const styles = StyleSheet.create({
 		alignContent:"flex-start",
 		justifyContent:"space-between",
 		flexWrap:"wrap",
-		fontSize:"15pt",
-		padding:"0 10px 0 10px",
+		fontSize:"12pt",
+		padding:"0 20px 40px 20px",
+		fontFamily: 'Courier'
 	},
 	header: {
 		width:"250px",
@@ -24,14 +25,16 @@ const styles = StyleSheet.create({
 		width:"800px",
 	},
 	tableHeaderItemDescription: {
-		backgroundColor:"gray",
-		height:"20px",
-		width:"60%"
+		backgroundColor:"#cccccc",
+		height:"30px",
+		width:"40%",
+		padding:"8px 3px",
 	},
 	tableHeaderItem: {
-		backgroundColor:"gray",
-		height:"20px",
-		width:"10%"
+		backgroundColor:"#cccccc",
+		height:"30px",
+		width:"15%",
+		padding:"8px 3px",
 	},
 	tableBody: {
 		flexDirection: "row",
@@ -39,30 +42,31 @@ const styles = StyleSheet.create({
 		justifyContent:"space-around",
 		flexWrap:"wrap",
 		width:"800px",
-		marginBottom:"10px"
 	},
 	tableBodyItemDescription: {
-		width:"60%",
-		height:"30px"
+		width:"40%",
+		padding:"3px"	
 	},
 	tableBodyItem: {
-		width:"10%",
-		alignItems:"center",
-		border:"1px solid red",
-		margin:"0 auto"
+		width:"15%",
+		padding:"10px 3px 0 5px",
+		height:"40px"
+	},
+	containerTableTotal:{
+		marginTop:"10px",
 	},
 	tableTotal: {
 		flexDirection: "row",
-		justifyContent:"flex-end",
 		flexWrap:"wrap",
-		width:"300px",
+		width:"300px"
 	},
 	tableTotalItem: {
 		border:"1px solid #cccccc",
-		width:"50%"
+		width:"50%",
+		padding:"3px"
 	},
 	backgroundColor: {
-		backgroundColor:"gray"
+		backgroundColor:"#cccccc"
 	},
 	borderLeft: {
 		borderLeft:"1px solid #cccccc"
@@ -72,9 +76,6 @@ const styles = StyleSheet.create({
 	},
 	borderBottom: {
 		borderBottom:"1px solid #cccccc"
-	},
-	textPadding:{
-		padding:"3px"
 	}
 });
 
@@ -90,7 +91,9 @@ function InvoicePdf({tableRowsValues, formValue, subtotal, total, currency}) {
 			<Page size="A4" style={styles.page}>
 				<View style={[styles.header]}>
 					<Text style={{fontSize:"30pt", marginBottom:"10px"}}>INVOICE</Text>
-					<Text>Invoice Number: {formValue.invoiceNumber}</Text>
+					{formValue.invoiceId && 
+						<Text>{formValue.invoiceId}</Text>
+					}
 					<Text>Date: {InvoiceDateConverted}</Text>
 					<Text>Due date: {InvoiceDueDateConverted}</Text>
 				</View>
@@ -98,11 +101,11 @@ function InvoicePdf({tableRowsValues, formValue, subtotal, total, currency}) {
 					<Image src={formValue.image} style={{width:"50%", marginLeft:"auto"}}></Image>
 				</View>
 				<View style={styles.header}>
-					<Text>Invoice From:</Text>
+					<Text style={{backgroundColor:"#cccccc", marginBottom:"10px"}}>Invoice From:</Text>
 					<Text>{formValue.personalInformation}</Text>
 				</View>
 				<View style={styles.header}>
-					<Text>Bill to:</Text>
+					<Text style={{backgroundColor:"#cccccc", marginBottom:"10px"}}>Bill to:</Text>
 					<Text>{formValue.billTo}</Text>
 				</View>
 				<View style={styles.tableHeader}>
@@ -115,28 +118,30 @@ function InvoicePdf({tableRowsValues, formValue, subtotal, total, currency}) {
 				{tableRowsValues.map((row, i) => 
 					<View key={nanoid()} style={styles.tableBody}>
 						<Text style={[styles.tableBodyItem, styles.borderLeft, styles.borderBottom]}>{row.quantity}</Text>
-						<Text style={[styles.tableBodyItemDescription, styles.borderLeft, styles.borderRigth, styles.borderBottom]} key={i}>{row.itemDescription}</Text>
-						<Text style={[styles.tableBodyItem, styles.borderRigth, styles.borderBottom]} key={i}>{row.rate}</Text>
-						<Text style={[styles.tableBodyItem, styles.borderRigth, styles.borderBottom]} key={i}>{row.taxPercentage}%</Text>
-						<Text style={[styles.tableBodyItem, styles.borderRigth, styles.borderBottom]} key={i}>{row.amount}</Text>
+						<Text style={[styles.tableBodyItemDescription, styles.borderLeft, styles.borderRigth, styles.borderBottom]}>{row.itemDescription}</Text>
+						<Text style={[styles.tableBodyItem, styles.borderRigth, styles.borderBottom]}>{row.rate}</Text>
+						<Text style={[styles.tableBodyItem, styles.borderRigth, styles.borderBottom]}>{row.taxPercentage}%</Text>
+						<Text style={[styles.tableBodyItem, styles.borderRigth, styles.borderBottom]}>{currency[1]}{row.amount}</Text>
 					</View>
 				)}
-				<View style={[styles.tableTotal, {marginLeft:"auto"}]}>
-					<Text style={[styles.tableTotalItem , styles.textPadding]}>Subtotal</Text>
-					<Text style={[styles.tableTotalItem, styles.textPadding]}>{currency}{subtotal}</Text>
-					{tableRowsValues.map((row, i) => {
-						if(row.taxPercentage !== 0) {
-							return <tr key={nanoid()}>
-								<View style={[styles.tableTotal, styles.textPadding]}>
-									<Text style={[styles.tableTotalItem, styles.textPadding]}>Tax ({row.taxPercentage}%)</Text>
-									<Text style={[styles.tableTotalItem]}>{currency[1]}{row.taxAmount}</Text>
-								</View>
-							</tr>
-						}
-						return null;
-					})} 
-					<Text style={[styles.tableTotalItem, styles.backgroundColor, styles.textPadding]}>Total</Text>
-					<Text style={[styles.tableTotalItem, styles.textPadding]}>{currency}{total}</Text>
+				<View style={[styles.containerTableTotal, {marginLeft:"auto"}]}>
+					<View style={styles.tableTotal}>
+						<Text style={[styles.tableTotalItem]}>Subtotal</Text>
+						<Text style={[styles.tableTotalItem]}>{currency[1]}{subtotal}</Text>
+						{tableRowsValues.map((row, i) => {
+							if(row.taxPercentage !== 0) {
+								return <tr key={nanoid()}>
+									<View style={[styles.tableTotal]}>
+										<Text style={[styles.tableTotalItem]}>Tax ({row.taxPercentage}%)</Text>
+										<Text style={[styles.tableTotalItem]}>{currency[1]}{row.taxAmount}</Text>
+									</View>
+								</tr>
+							}
+							return null;
+						})} 
+						<Text style={[styles.tableTotalItem, styles.backgroundColor]}>Total</Text>
+						<Text style={[styles.tableTotalItem]}>{currency[1]}{total}</Text>
+					</View>
 				</View>
 			</Page>
 		</Document>

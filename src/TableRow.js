@@ -11,24 +11,27 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
 
     const handleQuantityChange = (event) => {
         const tableRowsValuesCopy = [...tableRowsValues];
-        tableRowsValuesCopy[i].quantity = event.target.value;
-        tableRowsValuesCopy[i].amount = event.target.value * tableRowsValuesCopy[0].rate;
+        let eventFiltered = event.target.value.replace(/\D/g,'');
+        tableRowsValuesCopy[i].quantity = eventFiltered;
+        tableRowsValuesCopy[i].amount = eventFiltered * tableRowsValuesCopy[0].rate;
         tableRowsValuesCopy[i].taxAmount = tableRowsValuesCopy[i].amount * tableRowsValuesCopy[i].taxPercentage / 100;
         setTableRowsValues(tableRowsValuesCopy);
     }     
 
     const handleRateChange = (event) => {
         const tableRowsValuesCopy = [...tableRowsValues];
-        tableRowsValuesCopy[i].rate = event.target.value;
-        tableRowsValuesCopy[i].amount = event.target.value * tableRowsValuesCopy[0].quantity;
+        let eventFiltered = event.target.value.replace(/\D/g,'');
+        tableRowsValuesCopy[i].rate = eventFiltered
+        tableRowsValuesCopy[i].amount = eventFiltered * tableRowsValuesCopy[0].quantity;
         tableRowsValuesCopy[i].taxAmount = tableRowsValuesCopy[i].amount * tableRowsValuesCopy[i].taxPercentage / 100;
         setTableRowsValues(tableRowsValuesCopy);
     }   
 
     const handleTaxPercentageChange = (event) => {
         const tableRowsValuesCopy = [...tableRowsValues];
-        tableRowsValuesCopy[i].taxPercentage = event.target.value;
-        tableRowsValuesCopy[i].taxAmount = tableRowsValuesCopy[i].amount * event.target.value / 100;
+        let eventFiltered = event.target.value.replace(/\D/g,'');
+        tableRowsValuesCopy[i].taxPercentage = eventFiltered;
+        tableRowsValuesCopy[i].taxAmount = tableRowsValuesCopy[i].amount * eventFiltered / 100;
         setTableRowsValues(tableRowsValuesCopy);
     }
 
@@ -48,7 +51,7 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
             <td style={{width: "10%" }}>
                 <input 
                     className="input" 
-                    type="number"
+                    type="text"
                     min="1"
                     placeholder="Add an item description"
                     onChange={handleQuantityChange}
@@ -59,7 +62,7 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
             <td style={{width: "10%" }}>
                 <input 
                     className="input"
-                    type="number" 
+                    type="text" 
                     min="1"
                     placeholder="Add an item description"
                     onChange={handleRateChange}
@@ -71,7 +74,7 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
                 <p className="control has-icons-right">
                     <input 
                         className="input"
-                        type="number" 
+                        type="text" 
                         min="1"
                         placeholder="Add an item description"
                         onChange={handleTaxPercentageChange}

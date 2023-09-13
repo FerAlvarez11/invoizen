@@ -17,7 +17,7 @@ function TableRows({addRowValue, tableRowsValues, setTableRowsValues, deleteRow,
                     {tableRowsValues.map((row, i) => <TableRow key={i} i={i} deleteRow={deleteRow} tableRowsValues={tableRowsValues} setTableRowsValues={setTableRowsValues} currency={currency}/>)}
                 </tbody>
             </table>
-            <button className="button is-primary mr-4" onClick={addRowValue}>
+            <button className="button mr-4" onClick={addRowValue}>
                 <span className="icon">
                     <i className="fa-regular fa-square-plus"></i>
                 </span>
