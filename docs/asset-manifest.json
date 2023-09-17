@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/invoizen/static/css/main.03943aae.css",
+    "main.js": "/invoizen/static/js/main.55f9c1d1.js",
+    "static/js/787.0580bef4.chunk.js": "/invoizen/static/js/787.0580bef4.chunk.js",
+    "index.html": "/invoizen/index.html",
+    "main.03943aae.css.map": "/invoizen/static/css/main.03943aae.css.map",
+    "main.55f9c1d1.js.map": "/invoizen/static/js/main.55f9c1d1.js.map",
+    "787.0580bef4.chunk.js.map": "/invoizen/static/js/787.0580bef4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.03943aae.css",
+    "static/js/main.55f9c1d1.js"
+  ]
+}
