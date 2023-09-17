@@ -91,19 +91,19 @@ function InvoicePdf({tableRowsValues, formValue, subtotal, total, currency}) {
 			<Page size="A4" style={styles.page}>
 				<View style={[styles.header]}>
 					<Text style={{fontSize:"30pt", marginBottom:"10px"}}>INVOICE</Text>
-					{formValue.invoiceId && 
-						<Text style={{marginBottom:"5px"}}>#{formValue.invoiceId}</Text>
+					{formValue.invoiceId !== null ? 
+						<Text style={{marginBottom:"5px"}}>#{formValue.invoiceId}</Text> : null
 					}
 					<Text>{formValue.personalInformation}</Text>
 				</View>
 				<View style={styles.header}>
-					<Image src={formValue.image} style={{width:"50%", marginLeft:"auto"}}></Image>
+					{/* <Image src={formValue.image} style={{width:"50%", marginLeft:"auto"}}></Image> */}
 				</View>
-				{formValue.billTo &&
+				{formValue.billTo !== null ?
 					<View style={styles.header}>						
 						<Text style={{marginBottom:"5px"}}>Bill to:</Text>
 						<Text>{formValue.billTo}</Text>				
-					</View>
+					</View> : null
 				}
 				<View style={styles.header}>
 

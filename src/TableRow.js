@@ -1,4 +1,6 @@
 function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency}) {
+    console.log(tableRowsValues)
+    
     const handleDeleteRow = () =>{
         deleteRow(i);
     }
@@ -10,31 +12,35 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
     }
 
     const handleQuantityChange = (event) => {
+
+        console.log(i, "qty");
         const tableRowsValuesCopy = [...tableRowsValues];
-        let eventFiltered = event.target.value.replace(/\D/g,'');
-        tableRowsValuesCopy[i].quantity = eventFiltered;
-        tableRowsValuesCopy[i].amount = eventFiltered * tableRowsValuesCopy[0].rate;
+        let filteredQuantityValue = event.target.value.replace(/\D/g,'');
+        let quantityValueAsNumber = Number(filteredQuantityValue);
+        tableRowsValuesCopy[i].quantity = quantityValueAsNumber;
+        tableRowsValuesCopy[i].amount = quantityValueAsNumber * tableRowsValuesCopy[i].rate;
         tableRowsValuesCopy[i].taxAmount = tableRowsValuesCopy[i].amount * tableRowsValuesCopy[i].taxPercentage / 100;
         setTableRowsValues(tableRowsValuesCopy);
     }     
 
     const handleRateChange = (event) => {
         const tableRowsValuesCopy = [...tableRowsValues];
-        let eventFiltered = event.target.value.replace(/\D/g,'');
-        tableRowsValuesCopy[i].rate = eventFiltered
-        tableRowsValuesCopy[i].amount = eventFiltered * tableRowsValuesCopy[0].quantity;
+        let filteredRateValue = event.target.value.replace(/\D/g,'');
+        let rateValueAsNumber = Number(filteredRateValue);
+        tableRowsValuesCopy[i].rate = rateValueAsNumber;
+        tableRowsValuesCopy[i].amount = rateValueAsNumber * tableRowsValuesCopy[i].quantity;
         tableRowsValuesCopy[i].taxAmount = tableRowsValuesCopy[i].amount * tableRowsValuesCopy[i].taxPercentage / 100;
         setTableRowsValues(tableRowsValuesCopy);
     }   
 
     const handleTaxPercentageChange = (event) => {
         const tableRowsValuesCopy = [...tableRowsValues];
-        let eventFiltered = event.target.value.replace(/\D/g,'');
-        tableRowsValuesCopy[i].taxPercentage = eventFiltered;
-        tableRowsValuesCopy[i].taxAmount = tableRowsValuesCopy[i].amount * eventFiltered / 100;
+        let filteredTaxValue = event.target.value.replace(/\D/g,'');
+        let taxValueAsNumber = Number(filteredTaxValue);
+        tableRowsValuesCopy[i].taxPercentage = taxValueAsNumber;
+        tableRowsValuesCopy[i].taxAmount = tableRowsValuesCopy[i].amount * taxValueAsNumber / 100;
         setTableRowsValues(tableRowsValuesCopy);
     }
-
 
     return (
         <tr>
@@ -53,7 +59,6 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
                     className="input" 
                     type="text"
                     min="1"
-                    placeholder="Add an item description"
                     onChange={handleQuantityChange}
                     value={tableRowsValues[i].quantity}
                     name="quantity"                    
@@ -64,7 +69,6 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
                     className="input"
                     type="text" 
                     min="1"
-                    placeholder="Add an item description"
                     onChange={handleRateChange}
                     value={tableRowsValues[i].rate}
                     name="rate"
@@ -76,7 +80,6 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
                         className="input"
                         type="text" 
                         min="1"
-                        placeholder="Add an item description"
                         onChange={handleTaxPercentageChange}
                         value={tableRowsValues[i].taxPercentage}
                         name="taxPercentage"
