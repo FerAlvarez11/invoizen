@@ -1,6 +1,4 @@
-function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency}) {
-    console.log(tableRowsValues)
-    
+function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency}) {   
     const handleDeleteRow = () =>{
         deleteRow(i);
     }
@@ -12,8 +10,6 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
     }
 
     const handleQuantityChange = (event) => {
-
-        console.log(i, "qty");
         const tableRowsValuesCopy = [...tableRowsValues];
         let filteredQuantityValue = event.target.value.replace(/\D/g,'');
         let quantityValueAsNumber = Number(filteredQuantityValue);

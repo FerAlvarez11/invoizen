@@ -20,7 +20,7 @@ function App() {
     let currentDate = new Date().toJSON().slice(0, 10);
 
     const[formValue, setFormValue] = useState({
-        image:"logoDefault_backup.jpg",
+        image:"invoizen/logoDefault_backup.jpg",
         invoiceId: null,
         invoiceDate: currentDate,
         invoiceDueDate: currentDate,

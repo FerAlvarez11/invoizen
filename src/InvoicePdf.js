@@ -97,7 +97,7 @@ function InvoicePdf({tableRowsValues, formValue, subtotal, total, currency}) {
 					<Text>{formValue.personalInformation}</Text>
 				</View>
 				<View style={styles.header}>
-					{/* <Image src={formValue.image} style={{width:"50%", marginLeft:"auto"}}></Image> */}
+					<Image src={formValue.image} style={{width:"50%", marginLeft:"auto"}}></Image>
 				</View>
 				{formValue.billTo !== null ?
 					<View style={styles.header}>						
@@ -106,7 +106,6 @@ function InvoicePdf({tableRowsValues, formValue, subtotal, total, currency}) {
 					</View> : null
 				}
 				<View style={styles.header}>
-
 						<Text>Date: {InvoiceDateConverted}</Text>
 						<Text>Due date: {InvoiceDueDateConverted}</Text>
 				</View>

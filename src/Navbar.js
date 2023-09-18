@@ -10,7 +10,7 @@ function Navbar({tableRowsValues, formValue, handleCurrencyChange, currency, sub
         <div>
             <nav className="navbar is-link is-fixed-top">     
                 <div className="navbar-brand">                  
-                    <img src="logo.png" alt="Invoizen - Invoice generator" style={{marginLeft:"10px"}}/>
+                    <img src="/invoizen/logo.png" alt="Invoizen - Invoice generator" style={{marginLeft:"10px"}}/>
                 </div>
                 <div className="navbar-end">
                     <div className="navbar-item">
