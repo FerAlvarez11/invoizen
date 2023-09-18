@@ -1,4 +1,4 @@
-![Logo](https://imgur.com/sqoK1bB)
+![Logo](https://i.imgur.com/sqoK1bB.png)
 
 [Demo page](https://feralvarez11.github.io/invoizen/)
 
