@@ -1,3 +1,5 @@
+![Logo](https://imgur.com/sqoK1bB)
+
 [Demo page](https://feralvarez11.github.io/invoizen/)
 
 ## Introduction
@@ -15,4 +17,5 @@ Automatic Total: As you list your items in the table, the app does the math for 
 Download PDFs: With the 'react-pdf' package, you can quickly download your invoices as PDF files.
 
 ## Technologies that I used
+
 React, Bulma
