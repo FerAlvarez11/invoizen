@@ -120,7 +120,7 @@ function InvoicePdf({tableRowsValues, formValue, subtotal, total, currency}) {
 					<View key={nanoid()} style={styles.tableBody}>
 						<Text style={[styles.tableBodyItem, styles.borderLeft, styles.borderBottom]}>{row.quantity}</Text>
 						<Text style={[styles.tableBodyItemDescription, styles.borderLeft, styles.borderRigth, styles.borderBottom]}>{row.itemDescription}</Text>
-						<Text style={[styles.tableBodyItem, styles.borderRigth, styles.borderBottom]}>{row.rate}</Text>
+						<Text style={[styles.tableBodyItem, styles.borderRigth, styles.borderBottom]}>{currency[1]}{row.rate}</Text>
 						<Text style={[styles.tableBodyItem, styles.borderRigth, styles.borderBottom]}>{row.taxPercentage}%</Text>
 						<Text style={[styles.tableBodyItem, styles.borderRigth, styles.borderBottom]}>{currency[1]}{row.amount}</Text>
 					</View>

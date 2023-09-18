@@ -37,9 +37,9 @@ function Form({formValue, setFormValue}) {
 
     return (
         <div className="my-6">
-            <div className="columns">
+            <div className="columns is-centered">
                 <div className="column">
-                    <div className="file is-boxed">
+                    <div className="file is-boxed" style={{display:"block"}}>
                         <label className="file-label">
                             <input className="file-input" type="file" name="resume" onChange={handleImageChange}/>
                             <span className="file-cta">

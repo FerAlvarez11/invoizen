@@ -3,8 +3,8 @@ import './App.css';
 import Form from './Form';
 import Table from './Table';
 import 'bulma/css/bulma.min.css';
-import Navbar from './Navbar';
 import getSymbolFromCurrency from 'currency-symbol-map';
+import Actions from './Actions';
 
 function App() {
     const [tableRowsValues, setTableRowsValues] = useState([{
@@ -24,8 +24,8 @@ function App() {
         invoiceId: null,
         invoiceDate: currentDate,
         invoiceDueDate: currentDate,
-        personalInformation:"",
-        billTo:"",
+        personalInformation:null,
+        billTo:null,
     });
    
     const subtotal = tableRowsValues.reduce((accumulator, currentValue) => accumulator + currentValue.amount, 0);
@@ -39,10 +39,19 @@ function App() {
     }
 
     return (
-        <div className="container is-centered">
-            <Navbar tableRowsValues={tableRowsValues} formValue={formValue} handleCurrencyChange={handleCurrencyChange} currency={currency} subtotal={subtotal} total={total}/>
-            <Form formValue={formValue} setFormValue={setFormValue}/>
-            <Table currency={currency} setTableRowsValues={setTableRowsValues} tableRowsValues={tableRowsValues} subtotal={subtotal} total={total}/>
+        <div className="hero">
+            <div className='hero-head has-background-link has-text-centered'>
+                <img src="/invoizen/logo.png" alt="Invoizen - Invoice generator"/>
+            </div>
+            <div className='hero-body pt-0'>
+                <div className="container px-4">
+                    <Form formValue={formValue} setFormValue={setFormValue}/>
+                    <Table currency={currency} setTableRowsValues={setTableRowsValues} handleCurrencyChange={handleCurrencyChange} tableRowsValues={tableRowsValues} subtotal={subtotal} total={total}/>
+                    <div className="hero-foot has-text-centered">
+                        <Actions formValue={formValue} currency={currency} tableRowsValues={tableRowsValues} subtotal={subtotal} total={total}/>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

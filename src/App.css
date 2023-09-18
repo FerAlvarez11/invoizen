@@ -2,3 +2,7 @@
   text-align: center;
   overflow-wrap: break-word;
 }
+
+.table_wrapper {
+  overflow-x: auto;
+}
