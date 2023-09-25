@@ -40,7 +40,7 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
 
     return (
         <tr>
-            <td>
+            <td style={{minWidth:"200px"}}>
                 <input 
                     className="input" 
                     type="text" 
@@ -50,7 +50,7 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
                     name="itemDescription"
                 />
             </td>
-            <td style={{width: "10%" }}>
+            <td style={{width: "10%", minWidth:"100px"}}>
                 <input 
                     className="input" 
                     type="text"
@@ -60,7 +60,7 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
                     name="quantity"                    
                 />
             </td>
-            <td style={{width: "10%" }}>
+            <td style={{width: "10%", minWidth:"100px"}}>
                 <input 
                     className="input"
                     type="text" 
@@ -70,7 +70,7 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
                     name="rate"
                 />
             </td>
-            <td style={{width: "10%" }}>
+            <td style={{width: "10%", minWidth:"100px"}}>
                 <p className="control has-icons-right">
                     <input 
                         className="input"
@@ -85,10 +85,10 @@ function TableRow({deleteRow, i, tableRowsValues, setTableRowsValues, currency})
                     </span>
                 </p>                
             </td>
-            <td>
+            <td style={{minWidth:"100px"}}>
                 {currency[1]}{tableRowsValues[i].amount}
             </td>
-            <td style={{width: "2%" }}>
+            <td style={{width: "2%", minWidth:"100px"}}>
                 <button className="delete" onClick={handleDeleteRow}>delete</button>
             </td>
         </tr>

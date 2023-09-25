@@ -16,8 +16,8 @@ function Actions({subtotal, tableRowsValues, total, currency, formValue}) {
                     <div className="modal-background"></div>
                     <div className="modal-card">
                         <header className="modal-card-head">
-                        <p className="modal-card-title">Preview PDF</p>
-                        <button onClick={()=>setIsPreviewModalOpen(!isPreviewModalOpen)} className="delete" aria-label="close"></button>
+                            <p className="modal-card-title">Preview PDF</p>
+                            <button onClick={()=>setIsPreviewModalOpen(!isPreviewModalOpen)} className="delete" aria-label="close"></button>
                         </header>
                         <section className="modal-card-body" style={{width : "100%", height: "1000px"}}>
                             <PDFViewer style={{width : "100%", height: "100%", showToolbar:"false"}}>
