@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/invoizen/static/css/main.22b34eba.css",
-    "main.js": "/invoizen/static/js/main.2cd42404.js",
+    "main.js": "/invoizen/static/js/main.05fb3675.js",
     "static/js/787.0580bef4.chunk.js": "/invoizen/static/js/787.0580bef4.chunk.js",
     "index.html": "/invoizen/index.html",
     "main.22b34eba.css.map": "/invoizen/static/css/main.22b34eba.css.map",
-    "main.2cd42404.js.map": "/invoizen/static/js/main.2cd42404.js.map",
+    "main.05fb3675.js.map": "/invoizen/static/js/main.05fb3675.js.map",
     "787.0580bef4.chunk.js.map": "/invoizen/static/js/787.0580bef4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.22b34eba.css",
-    "static/js/main.2cd42404.js"
+    "static/js/main.05fb3675.js"
   ]
 }
